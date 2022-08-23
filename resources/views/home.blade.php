@@ -21,6 +21,8 @@
                     <th>Nom</th>
                     <th>Age</th>
                     <th>genre</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                 </tr>
                 @foreach ($members as $member)
                     <tr>
@@ -28,6 +30,18 @@
                         <td>{{ $member->nom }}</td>
                         <td>{{ $member->age }}</td>
                         <td>{{ $member->genre }}</td>
+                        <form action="/crudEdit/{{$member->id}}" method="post" enctype="multipart/form-data">
+                            @csrf
+
+                            <td><a href="/crudEdit/{{$member->id}}"><button type="submit">Edit</button></a></td>
+                        </form>
+                        <td>
+                            <form action="/{{ $member->id }}/delete" method='post'>
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit">Delete</button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </table>
@@ -41,7 +55,7 @@
                 <option value="femme" name='femme'><a href="{{ route('femme') }}">Femme</a></option>
             </select>
 
-            <table class="table table-striped table-bordered table-hover" >
+            <table class="table table-striped table-bordered table-hover">
                 <tr>
                     <th>Nom</th>
                     <th>genre</th>
@@ -53,7 +67,7 @@
                             <td>{{ $item->nom }}</td>
                             <td>{{ $item->genre }}</td>
                         </tr>
-                    {{-- @elseif($item->genre == 'Femme')
+                        {{-- @elseif($item->genre == 'Femme')
                         <tr>
                             <td>{{ $item->nom }}</td>
                             <td>{{ $item->genre }}</td>
@@ -65,19 +79,18 @@
         <hr>
         <section class="sect3 bg-success">
             <h1>Ajouter des membres</h1>
-           <form action="/createMember" method="post" enctype="multipart/form-data" class="d-flex flex-column ">
-            @csrf
-               <label for="">Nom</label>
-            <input class="bg-dark text-white-50" type="text" name="nom">
-               <label for="">Age</label>
-            <input class="bg-dark text-white-50" type="number" name="age">
-               <label for="">Genre</label>
-            <input class="bg-dark text-white-50" type="text" name="genre">
-               <button type="submit">Ajouter</button>
-            </form> 
+            <form action="/createMember" method="post" enctype="multipart/form-data" class="d-flex flex-column ">
+                @csrf
+                <label for="">Nom</label>
+                <input class="bg-dark text-white-50" type="text" name="nom">
+                <label for="">Age</label>
+                <input class="bg-dark text-white-50" type="number" name="age">
+                <label for="">Genre</label>
+                <input class="bg-dark text-white-50" type="text" name="genre">
+                <button type="submit">Ajouter</button>
+            </form>
         </section>
     </div>
-
 </body>
 
 </html>

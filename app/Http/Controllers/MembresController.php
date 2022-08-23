@@ -31,14 +31,11 @@ class MembresController extends Controller
         return redirect()->back();
     }
 
-    //update
-
-    public function updateMember( Request $request,$id ) {
+    //showID
+    public function showid($id) {
         $member = membres::find($id);
-        $member->nom = $request->nom;
-        $member->age = $request->age;
-        $member->genre = $request->genre;
-        $member->save();
-        return redirect()->back();
+        return view('home', compact('member'));
     }
+
+
 }

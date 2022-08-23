@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MembresController;
+use App\Http\Controllers\UpdateController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,4 +18,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[MembresController::class,'index']);
 Route::get('/homme',[MembresController::class,'index'])->name('homme');
 Route::get('/femme',[MembresController::class,'index'])->name('femme');
+//create
 Route::post('/createMember',[MembresController::class,'storeMember']);
+//delete
+Route::delete('/{id}/delete',[MembresController::class,'deleteMember']);
+//affichage ID
+Route::get('/crudEdit/{id}',[MembresController::class,'showid']);
+//update
+Route::put('/crudEdit/{id}/updateMember',[UpdateController::class,'updateMember']);
