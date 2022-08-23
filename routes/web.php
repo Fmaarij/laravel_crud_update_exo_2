@@ -17,3 +17,4 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[MembresController::class,'index']);
 Route::get('/homme',[MembresController::class,'index'])->name('homme');
 Route::get('/femme',[MembresController::class,'index'])->name('femme');
+Route::post('/createMember',[MembresController::class,'storeMember']);

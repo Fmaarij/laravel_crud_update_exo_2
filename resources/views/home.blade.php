@@ -12,10 +12,10 @@
 
 <body>
 
-    <div class="row">
-        <section class="sect1 col">
+    <div class=" d-flex flex-row  gap-3 ">
+        <section class="sect1 bg-primary">
             <h1>DB all</h1>
-            <table>
+            <table class="table table-striped table-bordered table-hover">
                 <tr>
                     <th>ID</th>
                     <th>Nom</th>
@@ -33,7 +33,7 @@
             </table>
         </section>
         <hr>
-        <section class="sect2 col">
+        <section class="sect2 bg-secondary ">
             <h1>Chercher par genre</h1>
             <label for="" name="genre">Genre</label>
             <select id="">
@@ -41,7 +41,7 @@
                 <option value="femme" name='femme'><a href="{{ route('femme') }}">Femme</a></option>
             </select>
 
-            <table>
+            <table class="table table-striped table-bordered table-hover" >
                 <tr>
                     <th>Nom</th>
                     <th>genre</th>
@@ -61,6 +61,20 @@
                     @endif
                 @endforeach
             </table>
+        </section>
+        <hr>
+        <section class="sect3 bg-success">
+            <h1>Ajouter des membres</h1>
+           <form action="/createMember" method="post" enctype="multipart/form-data" class="d-flex flex-column ">
+            @csrf
+               <label for="">Nom</label>
+            <input class="bg-dark text-white-50" type="text" name="nom">
+               <label for="">Age</label>
+            <input class="bg-dark text-white-50" type="number" name="age">
+               <label for="">Genre</label>
+            <input class="bg-dark text-white-50" type="text" name="genre">
+               <button type="submit">Ajouter</button>
+            </form> 
         </section>
     </div>
 
