@@ -34,8 +34,16 @@ class MembresController extends Controller
     //showID
     public function showid($id) {
         $member = membres::find($id);
-        return view('home', compact('member'));
+        return view('crudEdit', compact('member'));
     }
 
-
+ //update
+        public function updateMember( Request $request,$id ) {
+            $member = membres::find($id);
+            $member->nom = $request->nom;
+            $member->age = $request->age;
+            $member->genre = $request->genre;
+            $member->save();
+            return redirect()->back();
+        }
 }

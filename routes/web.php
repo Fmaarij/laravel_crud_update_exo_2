@@ -25,4 +25,4 @@ Route::delete('/{id}/delete',[MembresController::class,'deleteMember']);
 //affichage ID
 Route::get('/crudEdit/{id}',[MembresController::class,'showid']);
 //update
-Route::put('/crudEdit/{id}/updateMember',[UpdateController::class,'updateMember']);
+Route::put('/crudEdit/{id}/updateMember',[MembresController::class,'updateMember']);

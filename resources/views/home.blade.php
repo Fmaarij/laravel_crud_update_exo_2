@@ -30,11 +30,7 @@
                         <td>{{ $member->nom }}</td>
                         <td>{{ $member->age }}</td>
                         <td>{{ $member->genre }}</td>
-                        <form action="/crudEdit/{{$member->id}}" method="post" enctype="multipart/form-data">
-                            @csrf
-
-                            <td><a href="/crudEdit/{{$member->id}}"><button type="submit">Edit</button></a></td>
-                        </form>
+                        <td><a href="/crudEdit/{{ $member->id }}"><button>Edit</button></a></td>
                         <td>
                             <form action="/{{ $member->id }}/delete" method='post'>
                                 @csrf
@@ -90,6 +86,8 @@
                 <button type="submit">Ajouter</button>
             </form>
         </section>
+
+
     </div>
 </body>
 
